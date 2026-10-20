@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e83e87"><title>Administração | Lilis Gourmet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header class="top"><a href="../index.html" class="brand">🍿 <span>Lilis <b>Gourmet</b></span></a><span class="admin-label">PAINEL ADMINISTRATIVO</span><a class="back" href="../index.html">Ver loja ↗</a></header>
+  <main class="wrap">
+    <section class="welcome"><div><p class="eyebrow">ÁREA DA LOJA ♡</p><h1>Oi, Lilis! <span>✨</span></h1><p>Gerencie os sabores e acompanhe os pedidos registrados neste navegador.</p></div><div class="welcome-icon">💗</div></section>
+    <section class="stats"><article><span>Pedidos registrados</span><strong id="statOrders">0</strong></article><article><span>Pedidos novos</span><strong id="statNew">0</strong></article><article><span>Sabores adicionados</span><strong id="statFlavors">0</strong></article></section>
+    <section class="panel"><div class="panel-heading"><div><p class="eyebrow">ACOMPANHAMENTO</p><h2>Pedidos recebidos</h2><p>Atualize o status conforme preparar e entregar.</p></div><button class="btn light" id="refreshOrders">Atualizar ↻</button></div><div class="filters"><button class="filter active" data-filter="Todos">Todos</button><button class="filter" data-filter="Novo">Novos</button><button class="filter" data-filter="Preparando">Preparando</button><button class="filter" data-filter="Pronto">Prontos</button><button class="filter" data-filter="Entregue">Entregues</button></div><div id="orders" class="orders"></div></section>
+    <section class="panel"><div class="panel-heading"><div><p class="eyebrow">CARDÁPIO</p><h2>Adicionar sabor</h2><p>O sabor adicionado fica disponível no cardápio deste navegador.</p></div><span class="flavor-icon">🍿</span></div>
+      <form id="flavorForm" class="flavor-form">
+        <label>Nome do sabor<input id="flavorName" required maxlength="60" placeholder="Ex.: Morango com chocolate"></label>
+        <label>Categoria<select id="flavorCategory"></select></label>
+        <label class="wide">Descrição<input id="flavorDesc" required maxlength="150" placeholder="Conte o que deixa esse sabor especial"></label>
+        <label>Preço 250 ml (R$)<input id="price250" type="number" min="0.01" step="0.01" required placeholder="18,00"></label>
+        <label>Preço 350 ml (R$)<input id="price350" type="number" min="0.01" step="0.01" required placeholder="22,00"></label>
+        <label>Preço 500 ml (R$)<input id="price500" type="number" min="0.01" step="0.01" required placeholder="25,00"></label>
+        <label class="wide">Foto do produto<input id="flavorImg" type="file" accept="image/*"><small>Escolha uma imagem da galeria do seu computador. Imagens grandes podem ocupar bastante espaço.</small><img id="imagePreview" alt="Prévia da foto" hidden style="max-width:180px;max-height:130px;object-fit:cover;border-radius:12px;margin-top:8px"></label>
+        <label class="wide">Selo (opcional)<input id="flavorBadge" maxlength="40" placeholder="Novidade 💗"></label>
+        <button class="btn primary wide" id="saveProductButton" type="submit">＋ Adicionar sabor ao cardápio</button><button class="btn light wide" id="cancelEditProduct" type="button" hidden>Cancelar edição</button>
+      </form><div class="category-manager"><h3>Gerenciar categorias</h3><form id="categoryForm" class="category-form"><label>Nome da nova categoria<input id="categoryName" required maxlength="50" placeholder="Ex.: Pipocas especiais"></label><button class="btn light" type="submit">＋ Criar categoria</button></form><div id="categoriesList" class="flavors"></div></div><div id="flavors" class="flavors"></div>
+    </section>
+    <section class="panel"><div class="panel-heading"><div><p class="eyebrow">PERSONALIZAÇÃO</p><h2>Gerenciar acréscimos</h2><p>Cadastre coberturas e extras que o cliente poderá marcar ao escolher a pipoca.</p></div><span class="flavor-icon">🍫</span></div>
+      <form id="extraForm" class="flavor-form extra-form">
+        <label>Nome do acréscimo<input id="extraName" required maxlength="60" placeholder="Ex.: Leite Ninho"></label>
+        <label>Preço adicional (R$)<input id="extraPrice" type="number" min="0" step="0.01" required placeholder="Ex.: 4,00"></label>
+        <button class="btn primary wide" type="submit">＋ Adicionar acréscimo</button>
+      </form>
+      <div id="extrasList" class="flavors"></div>
+    </section>
+    <p class="notice"><strong>Importante:</strong> esta versão é um painel demonstrativo que usa o armazenamento do navegador. Para pedidos de clientes em outros aparelhos aparecerem aqui de verdade, será necessário conectar o site a um servidor e banco de dados. O WhatsApp continua sendo aberto para o cliente enviar o pedido.</p>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div><script src="admin.js"></script>
+</body></html>

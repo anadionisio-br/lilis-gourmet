@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e83e87">
+  <meta name="description" content="Lilis Gourmet — pipoca doce gourmet. Monte seu pedido no cardápio e finalize pelo WhatsApp.">
+  <title>Lilis Gourmet | Pipoca doce gourmet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#topo" aria-label="Lilis Gourmet">
+    <span class="brand-logo"><img src="assets/logo-lilis.jpg" alt="Logo Lilis Gourmet"></span>
+    <span class="brand-name">Lilis <small>Gourmet</small></span>
+  </a>
+  <nav class="topnav" aria-label="Seções">
+    <a href="#cardapio">Cardápio</a>
+    <a href="#infos">Entrega e pagamento</a>
+    <a href="#pedido">Meu pedido</a>
+  </nav>
+  <button class="cart-btn" id="topCartBtn" type="button" aria-label="Ir para meu pedido">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 8h14l-1.2 11a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 8Zm4 0a3 3 0 0 1 6 0"/></svg>
+    <b id="topCartCount" hidden>0</b>
+  </button>
+</header>
+
+<main id="topo">
+  <section class="hero">
+    <div class="hero-confetti confetti-one" aria-hidden="true">✦</div>
+    <div class="hero-confetti confetti-two" aria-hidden="true">♡</div>
+    <div class="hero-text reveal">
+      <p class="hand"><span class="hand-dot"></span> Feita para adoçar seu dia</p>
+      <h1>Pequenos momentos,<br>grandes <span>gostosuras!</span></h1>
+      <p class="hero-description">Pipoca gourmet feita com carinho, crocância e aquele sabor que dá vontade de repetir. Escolha seu baldinho favorito!</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#cardapio">Ver cardápio <span>↗</span></a>
+        <a class="hero-link" href="https://wa.me/5519989138914" target="_blank" rel="noopener noreferrer">Quero pedir pelo WhatsApp <span>→</span></a>
+      </div>
+      <div class="hero-stats"><span class="stat-heart">♡</span><span><strong>Um carinho em cada baldinho</strong><small>Seu docinho favorito está aqui.</small></span></div>
+    </div>
+    <div class="hero-visual reveal delay-1" aria-label="Logo da Lilis Gourmet">
+      <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+      <span class="visual-star star-a">✦</span><span class="visual-star star-b">✧</span><span class="visual-heart">♡</span>
+      <div class="logo-circle"><img src="assets/logo-lilis.jpg" alt="Logo Lilis Gourmet"></div>
+      <div class="floating-note note-top">feito com amor <span>♡</span></div>
+      <div class="floating-note note-bottom"><span>🍿</span> Pipoca gourmet</div>
+    </div>
+    <a class="scroll-cue" href="#cardapio"><span></span> vem escolher seu sabor</a>
+  </section>
+
+  <div class="ticker" aria-label="Lilis Gourmet"><div class="ticker-track"><span>feito com carinho ♡</span><i>✦</i><span>pipoca gourmet</span><i>✦</i><span>um estouro de sabor</span><i>✦</i><span>feito com carinho ♡</span><i>✦</i><span>pipoca gourmet</span><i>✦</i><span>um estouro de sabor</span><i>✦</i></div></div>
+
+  <section class="menu section-wrap" id="cardapio">
+    <div class="section-heading reveal">
+      <p class="eyebrow">✦ ESCOLHA SEU FAVORITO ✦</p>
+      <h2>Nosso <span>cardápio</span></h2>
+      <p>Qual gostosura combina com o seu dia?</p>
+      <div class="heading-squiggle" aria-hidden="true">﹏﹏﹏</div>
+    </div>
+    <div class="cats" id="cats" role="tablist" aria-label="Categorias do cardápio">
+      <a href="#cat-baldinhos" class="cat active">🍿 Baldinhos tradicionais</a>
+      <a href="#cat-chocolate" class="cat">🍫 Chocolate</a>
+    </div>
+
+    <div class="cat-block" id="cat-baldinhos">
+      <div class="cat-title"><span class="cat-emoji">🍿</span><div><h2>Baldinhos tradicionais</h2><p class="cat-note">Crocantes por fora, apaixonantes em cada mordida.</p></div><span class="section-number">01 / 02</span></div>
+      <div class="flavor-callout"><span>♡</span><p>Monte do seu jeitinho: <strong>até 2 recheios grátis</strong> entre Ninho, Avelã e Kinder Bueno.</p><span>♡</span></div>
+      <div class="items" id="list-baldinhos"></div>
+    </div>
+
+    <div class="cat-block" id="cat-chocolate">
+      <div class="cat-title"><span class="cat-emoji">🍫</span><div><h2>Chocolate</h2><p class="cat-note">Um toque extra de felicidade para os chocólatras.</p></div><span class="section-number">02 / 02</span></div>
+      <div class="items" id="list-chocolate"></div>
+    </div>
+  </section>
+
+<section class="checkout-section section-wrap" id="pedido" aria-labelledby="cartTitle"><div class="checkout-panel">
+  <div class="sheet-head"><div><h2 id="cartTitle">Seu pedido 🛍️</h2><p>Confira tudo antes de enviar!</p></div></div>
+  <div class="sheet-body"><div id="cartEmpty" class="empty" hidden><p>Seu carrinho ainda está vazio 🍿</p><a class="btn btn-ghost" href="#cardapio">Escolher meus baldinhos</a></div><div id="cartFilled"><ul class="cart-lines" id="cartLines"></ul><a class="link" id="addMoreItems" href="#cardapio">＋ Adicionar mais itens</a>
+    <form id="checkoutForm" novalidate>
+      <fieldset><legend>💗 Seus dados</legend><label class="field">Nome<input type="text" id="fName" autocomplete="name" placeholder="Como podemos te chamar?"><em class="err" id="errName"></em></label></fieldset>
+      <fieldset><legend>🛵 Como você quer receber?</legend><div class="seg"><label><input type="radio" name="mode" value="entrega" checked><span>Entrega <small>+ R$ 7,00</small></span></label><label><input type="radio" name="mode" value="retirada"><span>Retirada <small>sem taxa</small></span></label></div>
+        <div id="addressBox"><label class="field">Rua / avenida<input type="text" id="fStreet" autocomplete="address-line1" placeholder="Nome da rua"><em class="err" id="errStreet"></em></label><div class="row2"><label class="field">Número<input type="text" id="fNumber" inputmode="numeric" placeholder="Nº"><em class="err" id="errNumber"></em></label><label class="field">Bairro<input type="text" id="fDistrict" placeholder="Seu bairro"><em class="err" id="errDistrict"></em></label></div><label class="field">Complemento ou referência <span class="opt-text">(opcional)</span><input type="text" id="fComplement" placeholder="Casa, portão, referência..."></label></div>
+      </fieldset>
+      <fieldset><legend>💳 Pagamento</legend><div class="seg seg-4"><label><input type="radio" name="pay" value="Pix" checked><span>Pix</span></label><label><input type="radio" name="pay" value="Dinheiro"><span>Dinheiro</span></label><label><input type="radio" name="pay" value="Cartão de crédito"><span>Crédito</span></label><label><input type="radio" name="pay" value="Cartão de débito"><span>Débito</span></label></div><label class="field" id="changeBox" hidden>Troco para quanto? <span class="opt-text">(opcional)</span><input type="text" id="fChange" inputmode="decimal" placeholder="Ex.: 50,00"></label></fieldset>
+      <fieldset><legend>💬 Observações <span class="opt-text">(opcional)</span></legend><label class="field"><textarea id="fNote" rows="2" placeholder="Alguma observação para o pedido?"></textarea></label></fieldset>
+    </form>
+    <dl class="totals"><div><dt>Subtotal</dt><dd id="tSub">R$ 0,00</dd></div><div><dt>Entrega</dt><dd id="tFee">R$ 7,00</dd></div><div class="grand"><dt>Total</dt><dd id="tTotal">R$ 0,00</dd></div></dl></div></div>
+  <div class="sheet-foot" id="cartFoot"><button type="button" class="btn btn-wa grow" id="sendWa"><span aria-hidden="true">◉</span> Enviar pedido no WhatsApp</button></div>
+</div></section>
+
+  <section class="infos section-wrap" id="infos">
+    <div class="section-heading reveal"><p class="eyebrow">SEM COMPLICAÇÃO ♡</p><h2>Seu pedido, <span>do seu jeito</span></h2><p>Escolha, combine e deixe o resto com a gente.</p></div>
+    <div class="info-grid">
+      <article class="info-card reveal"><span class="info-icon">🛵</span><span class="info-tag">01</span><h3>Entrega</h3><p>Receba sua gostosura em casa. Taxa de entrega de <strong>R$ 7,00</strong>. A retirada é grátis!</p></article>
+      <article class="info-card reveal delay-1"><span class="info-icon">💳</span><span class="info-tag">02</span><h3>Pagamento</h3><p>Pix, dinheiro, cartão de crédito ou débito. Você escolhe na hora de finalizar.</p></article>
+      <article class="info-card reveal delay-2"><span class="info-icon">💗</span><span class="info-tag">03</span><h3>Pedido fácil</h3><p>Monte seu carrinho e envie tudo organizadinho para a gente pelo WhatsApp.</p></article>
+    </div>
+  </section>
+
+  <section class="closing"><div class="closing-spark">✦</div><p class="closing-script">Um pouquinho de doçura muda tudo.</p><h2>Hoje merece <span>Lilis!</span></h2><a class="btn btn-light" href="#cardapio">Escolher meus sabores <span>♡</span></a><div class="closing-doodle" aria-hidden="true">🍿　♡　✦</div></section>
+</main>
+
+<footer class="footer">
+  <a class="footer-brand" href="#topo"><img src="assets/logo-lilis.jpg" alt="" width="42" height="42"><span>Lilis <small>Gourmet</small></span></a>
+  <p>Pipoca doce gourmet feita para adoçar seu dia.</p>
+  <div class="footer-links"><a href="https://www.instagram.com/lilis.pipocagourmet/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://wa.me/5519989138914" target="_blank" rel="noopener noreferrer">Falar no WhatsApp ↗</a></div>
+  <small>Feito com carinho ♡</small>
+</footer>
+
+<div class="cartbar" id="cartBar" hidden><button type="button" id="openCart"><span class="cartbar-left"><b id="barCount">0</b> <span id="barLabel">itens</span></span><span class="cartbar-mid">Descer para meu pedido <span aria-hidden="true">↓</span></span><span class="cartbar-total" id="barTotal">R$ 0,00</span></button></div>
+
+<dialog class="sheet" id="itemDialog" aria-labelledby="itemTitle">
+  <div class="sheet-head"><img id="itemImg" src="" alt="" width="64" height="64"><div><h2 id="itemTitle"></h2><p id="itemDesc"></p></div><button type="button" class="x" data-close aria-label="Fechar">×</button></div>
+  <div class="sheet-body" id="itemBody"></div>
+  <div class="sheet-foot"><div class="stepper" aria-label="Quantidade"><button type="button" id="itemMinus" aria-label="Diminuir">−</button><output id="itemQty">1</output><button type="button" id="itemPlus" aria-label="Aumentar">+</button></div><button type="button" class="btn btn-primary grow" id="itemAdd">Adicionar <span id="itemTotal">R$ 0,00</span></button></div>
+</dialog>
+
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>

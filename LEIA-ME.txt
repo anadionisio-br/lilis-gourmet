@@ -1,0 +1,23 @@
+LILIS GOURMET — PAINEL ADMINISTRATIVO ATUALIZADO
+
+Arquivos deste pacote:
+- script.js: atualização do cardápio para acréscimos selecionáveis e categorias dinâmicas.
+- admin/: painel administrativo de pedidos, produtos, categorias e acréscimos.
+
+INSTALAÇÃO
+1. Faça uma cópia de segurança dos arquivos atuais.
+2. Extraia este ZIP.
+3. Substitua o script.js na pasta principal do site.
+4. Substitua os arquivos da pasta admin pelos arquivos deste pacote.
+5. Abra admin/index.html para administrar produtos, categorias e acréscimos.
+
+NOVIDADES
+- Criar categorias personalizadas.
+- Selecionar foto do computador/galeria ao cadastrar produto.
+- Editar nome, descrição, categoria, preços, foto e selo dos produtos cadastrados.
+- Excluir produtos e categorias (categorias em uso não podem ser removidas).
+- Acréscimos seguem separados do preço base do produto.
+- Acréscimos personalizados continuam editáveis e selecionáveis no cardápio.
+
+IMPORTANTE
+O painel usa localStorage do navegador. Os dados ficam neste navegador/origem e não sincronizam automaticamente com outros aparelhos. Fotos são armazenadas como dados no navegador; prefira imagens leves. Para sincronizar entre dispositivos e receber pedidos reais de clientes, é necessário backend/banco de dados.
