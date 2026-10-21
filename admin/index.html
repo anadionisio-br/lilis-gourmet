@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e83e87"><title>Administração | Lilis Gourmet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header class="top"><a href="../index.html" class="brand">🍿 <span>Lilis <b>Gourmet</b></span></a><span class="admin-label">PAINEL ADMINISTRATIVO</span><a class="back" href="../index.html">Ver loja ↗</a><button class="btn light" id="logoutButton" type="button">Sair</button></header>
+  <main class="wrap">
+    <section class="welcome"><div><p class="eyebrow">ÁREA DA LOJA ♡</p><h1>Oi, Lilis! <span>✨</span></h1><p>Gerencie o cardápio e acompanhe os pedidos que chegam pelo site.</p></div><div class="welcome-icon">💗</div></section>
+    <section class="stats"><article><span>Pedidos registrados</span><strong id="statOrders">0</strong></article><article><span>Pedidos novos</span><strong id="statNew">0</strong></article><article><span>Produtos no cardápio</span><strong id="statFlavors">0</strong></article></section>
+    <section class="panel"><div class="panel-heading"><div><p class="eyebrow">ACOMPANHAMENTO</p><h2>Pedidos recebidos</h2><p>Atualize o status conforme preparar e entregar.</p></div><button class="btn light" id="refreshOrders">Atualizar ↻</button></div><div class="filters"><button class="filter active" data-filter="Todos">Todos</button><button class="filter" data-filter="Novo">Novos</button><button class="filter" data-filter="Preparando">Preparando</button><button class="filter" data-filter="Pronto">Prontos</button><button class="filter" data-filter="Entregue">Entregues</button></div><div id="orders" class="orders"></div></section>
+    <section class="panel"><div class="panel-heading"><div><p class="eyebrow">CARDÁPIO</p><h2>Produtos do cardápio</h2><p>O novo sabor aparece no site assim que você salvar.</p></div><span class="flavor-icon">🍿</span></div>
+      <form id="flavorForm" class="flavor-form">
+        <label>Nome do sabor<input id="flavorName" required maxlength="60" placeholder="Ex.: Morango com chocolate"></label>
+        <label>Categoria<select id="flavorCategory"></select></label>
+        <label class="wide">Descrição<input id="flavorDesc" required maxlength="150" placeholder="Conte o que deixa esse sabor especial"></label>
+        <label>Preço 250 ml (R$)<input id="price250" type="number" min="0.01" step="0.01" required placeholder="18,00"></label>
+        <label>Preço 350 ml (R$)<input id="price350" type="number" min="0.01" step="0.01" required placeholder="22,00"></label>
+        <label>Preço 500 ml (R$)<input id="price500" type="number" min="0.01" step="0.01" required placeholder="25,00"></label>
+        <label class="wide">Foto do produto<input id="flavorImg" type="file" accept="image/*"><small>Escolha uma imagem (até 5 MB). Ela é enviada para o Supabase Storage.</small><img id="imagePreview" alt="Prévia da foto" hidden style="max-width:180px;max-height:130px;object-fit:cover;border-radius:12px;margin-top:8px"></label>
+        <label class="wide">Selo (opcional)<input id="flavorBadge" maxlength="40" placeholder="Novidade 💗"></label>
+        <label class="wide">Recheios grátis (opcional, separados por vírgula)<input id="flavorFillings" placeholder="Ninho, Avelã, Kinder Bueno"></label>
+        <label>Máx. de recheios<input id="flavorMaxFillings" type="number" min="0" max="10" step="1" value="0"></label>
+        <button class="btn primary wide" id="saveProductButton" type="submit">＋ Adicionar sabor ao cardápio</button>
+      </form><div class="category-manager"><h3>Gerenciar categorias</h3><form id="categoryForm" class="category-form"><label>Nome da nova categoria<input id="categoryName" required maxlength="50" placeholder="Ex.: Pipocas especiais"></label><button class="btn light" type="submit">＋ Criar categoria</button></form><div id="categoriesList" class="flavors"></div></div><h3 class="list-title">Editar produtos existentes</h3><div id="flavors" class="flavors"></div>
+    </section>
+    <section class="panel"><div class="panel-heading"><div><p class="eyebrow">PERSONALIZAÇÃO</p><h2>Gerenciar acréscimos</h2><p>Cadastre coberturas e extras que o cliente poderá marcar ao escolher a pipoca.</p></div><span class="flavor-icon">🍫</span></div>
+      <form id="extraForm" class="flavor-form extra-form">
+        <label>Nome do acréscimo<input id="extraName" required maxlength="60" placeholder="Ex.: Leite Ninho"></label>
+        <label>Preço adicional (R$)<input id="extraPrice" type="number" min="0" step="0.01" required placeholder="Ex.: 4,00"></label>
+        <button class="btn primary wide" type="submit">＋ Adicionar acréscimo</button>
+      </form>
+      <div id="extrasList" class="flavors"></div>
+    </section>
+  </main>
+  
+  <dialog id="editDialog" class="modal">
+    <form id="editForm" class="flavor-form modal-form">
+      <div class="modal-head wide"><h2 id="editTitle">Editar produto</h2><button type="button" class="x" id="editClose" aria-label="Fechar">×</button></div>
+      <label class="wide">Nome do sabor<input id="editName" required maxlength="60"></label>
+      <label>Categoria<select id="editCategory"></select></label>
+      <label class="wide">Descrição<input id="editDesc" required maxlength="150"></label>
+      <label>Preço 250 ml (R$)<input id="editPrice250" type="number" min="0.01" step="0.01" required></label>
+      <label>Preço 350 ml (R$)<input id="editPrice350" type="number" min="0.01" step="0.01" required></label>
+      <label>Preço 500 ml (R$)<input id="editPrice500" type="number" min="0.01" step="0.01" required></label>
+      <label class="wide">Selo (opcional)<input id="editBadge" maxlength="40" placeholder="Novidade 💗"></label>
+      <label class="wide">Recheios grátis (separados por vírgula)<input id="editFillings" placeholder="Ninho, Avelã, Kinder Bueno"><small>Deixe vazio se este produto não tem recheios.</small></label>
+      <label>Máx. de recheios<input id="editMaxFillings" type="number" min="0" max="10" step="1" value="0"></label>
+      <label class="check wide"><input type="checkbox" id="editActive"> Visível no site</label>
+      <label class="wide">Foto do produto<input id="editImg" type="file" accept="image/*"><small>Deixe em branco para manter a foto atual.</small><img id="editPreview" alt="Foto do produto" hidden class="edit-preview"></label>
+      <div class="modal-actions wide"><button class="btn light" type="button" id="editCancel">Cancelar</button><button class="btn primary" type="submit" id="editSave">Salvar alterações</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="loginDialog" class="modal">
+    <form id="loginForm" class="flavor-form modal-form">
+      <div class="modal-head wide"><h2>Entrar no painel</h2></div>
+      <p class="muted wide" id="loginError" hidden></p>
+      <label class="wide">E-mail<input id="loginEmail" type="email" required autocomplete="username"></label>
+      <label class="wide">Senha<input id="loginPassword" type="password" required autocomplete="current-password"></label>
+      <button class="btn primary wide" id="loginSubmit" type="submit">Entrar</button>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../supabase-config.js"></script>
+<script src="admin.js"></script>
+
+
+</body></html>

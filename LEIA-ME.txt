@@ -1,0 +1,31 @@
+LILIS GOURMET
+
+ESTRUTURA
+- index.html            : site (cardápio, carrinho, envio pelo WhatsApp)
+- admin/index.html      : painel administrativo (produtos, categorias, acréscimos, pedidos)
+- supabase-config.js    : conexão com o Supabase (URL e chave pública)
+- supabase/schema.sql   : banco de dados completo (rodar uma vez)
+- assets/               : fotos dos 4 produtos iniciais
+
+CONFIGURAR O BANCO (uma vez só)
+1. Supabase > Authentication > Users > "Add user": crie a conta da administradora
+   (e-mail + senha). Se pedir, marque "Auto Confirm User".
+2. Abra supabase/schema.sql e troque 'TROQUE-PELO-SEU-EMAIL@exemplo.com' pelo e-mail
+   dessa conta.
+3. Supabase > SQL Editor > New query > cole o arquivo inteiro > Run.
+4. Recomendado: Authentication > Sign In / Providers > desative "Allow new users to
+   sign up" (só você precisa de conta).
+
+HOSPEDAGEM
+Envie a pasta inteira (index.html, admin/, assets/, supabase-config.js) para a mesma
+hospedagem. O painel fica em /admin/.
+
+COMO USAR O PAINEL
+- Produtos: cada produto tem "Editar" (nome, descrição, categoria, preços, selo,
+  recheios, foto, visível/oculto), "Ocultar/Mostrar" e "Excluir".
+- Pedidos feitos no site aparecem em "Pedidos recebidos" (e o WhatsApp continua sendo
+  aberto para o cliente enviar a mensagem).
+
+AJUSTES NO SITE
+- WhatsApp e taxa de entrega: início do script em index.html (WHATSAPP e DELIVERY_FEE).
+  Se mudar a taxa, mude também v_delivery_fee em supabase/schema.sql.
