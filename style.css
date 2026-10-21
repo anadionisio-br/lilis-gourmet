@@ -24,3 +24,81 @@
   .checkout-section .sheet-foot { padding: 15px 17px 19px; }
   .topnav a:last-child { display: inline; }
 }
+
+/* --- Prevenção Geral de Overflows / Barra Lateral de Rolagem Indesejada --- */
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Imagens responsivas */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* --- Media Queries para Telas Menores (Smartphones) --- */
+@media screen and (max-width: 768px) {
+
+    /* Container principal com margens adequadas */
+    .container, section {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        width: 100% !important;
+    }
+
+    /* Ajuste de grids e colunas para layout vertical */
+    .grid, 
+    .cardapio-grid, 
+    .products-container, 
+    .flex-container {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    /* Tipografia responsiva */
+    h1 {
+        font-size: 1.8rem !important;
+    }
+    
+    h2 {
+        font-size: 1.5rem !important;
+    }
+
+    /* Ajustes em tabelas (caso haja lista de preços em tabela) */
+    table {
+        width: 100% !important;
+        display: block;
+        overflow-x: auto;
+    }
+
+    /* Botões amigáveis para toque no celular */
+    button, .btn {
+        width: 100% !important;
+        padding: 12px 20px !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* Previne zoom automático ao focar em inputs no Safari/Chrome Mobile */
+input, textarea, select {
+    font-size: 16px !important;
+}
+
+/* Impede o zoom por toque duplo ou gestos indesejados */
+html, body {
+    touch-action: manipulation;
+}
+
+/* Aplica especificamente em botões e links clicáveis */
+button, a, .card, .btn {
+    touch-action: manipulation;
+}
